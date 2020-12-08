@@ -16,5 +16,5 @@ interface AppService {
         @Query("image_type") image_type: String, @Query("orientation") orientation: String,
         @Query("category") category: String, @Query("colors") colors: String,
         @Query("editors_choice") editors_choice: Boolean, @Query("order") order: String,
-        @Query("page") page: Int, @Query("per_page") per_page: Int): Observable<ResponseWrapper<DataEntity>>
+        @Query("page") page: Int, @Query("per_page") per_page: Int): Observable<ResponseWrapper<MutableList<DataEntity>>>
 }

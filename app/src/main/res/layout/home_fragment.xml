@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="homeViewModel"
+            type="com.boggle.wall.moudle.main.fragment.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cl_all"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorDivider"
+        tools:context=".moudle.main.fragment.home.HomeFragment">
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/st_all"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/colorDivider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tl_indicator_color="@color/color_indicator"
+            app:tl_indicator_style="TRIANGLE"
+            app:tl_indicator_height="8dp"
+            app:tl_indicator_margin_bottom="6dp"
+            app:tl_indicator_width_equal_title="true"
+            app:tl_tab_space_equal="true"
+            app:tl_textBold="SELECT"
+            app:tl_textSelectColor="@color/title"
+            app:tl_textUnselectColor="@color/title_bg"
+            app:tl_textsize="14sp"
+            app:tl_underline_color="@color/colorDivider"
+            app:tl_underline_gravity="BOTTOM"
+            app:tl_underline_height="1px" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_all"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/st_all" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

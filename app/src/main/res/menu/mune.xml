@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/home"
+        android:title="首页" />
+    <item
+        android:id="@+id/typeFragment"
+        android:icon="@drawable/type"
+        android:title="分类" />
+    <item
+        android:id="@+id/dayFragment"
+        android:icon="@drawable/day"
+        android:title="每日精选" />
+</menu>

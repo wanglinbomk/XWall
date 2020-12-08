@@ -26,9 +26,9 @@ abstract class RequestCallbackV2<T>(private val context: Context) : Observer<Res
     }
 
     override fun onNext(t: ResponseWrapper<T>) {
-        if (t.total>0){
+        if (t.total > 0) {
             success(t.hits)
-        }else{
+        } else {
             failure("no_data")
         }
     }
