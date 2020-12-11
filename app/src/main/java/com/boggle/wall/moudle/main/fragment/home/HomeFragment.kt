@@ -29,9 +29,9 @@ class HomeFragment : Fragment() {
         fragments.add(FirstFragment())
         fragments.add(FirstFragment())
 
-        titles.add("任务池")
-        titles.add("我的任务")
-        titles.add("已完成")
+        titles.add("首页")
+        titles.add("热门")
+        titles.add("最新")
 
     }
 
@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
-        binding.clAll.setPadding(0,(QMUIDisplayHelper.getActionBarHeight(context)/1.5).toInt(),0,0)
+        binding.clAll.setPadding(0,(QMUIDisplayHelper.getActionBarHeight(context)/2).toInt(),0,0)
 
         mMyViewPagerAdapter = MyViewPagerAdapter(requireActivity().supportFragmentManager, titles, fragments)
         binding.vpAll.adapter = mMyViewPagerAdapter

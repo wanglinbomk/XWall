@@ -9,5 +9,5 @@
     <color name="color_indicator">#8DB5F8</color>
     <color name="title">#333333</color>
     <color name="title_bg">#99333333</color>
-    <color name="colorDivider">#d8d8d8</color>
+    <color name="colorDivider">#fafafa</color>
 </resources>
