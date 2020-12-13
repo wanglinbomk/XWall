@@ -13,6 +13,5 @@ class APP : Application() {
     override fun onCreate() {
         super.onCreate()
         mInstance = this
-        RetrofitHelper.initOkHttpClient(applicationContext)
     }
 }
