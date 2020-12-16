@@ -178,7 +178,7 @@ public class ScreenUtils {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         //屏幕宽度
         int screenWidth = dm.widthPixels;
-        params.height = (int) (screenWidth * 0.4);
+        params.height = (int) (screenWidth * 0.42);
         return params;
     }
 

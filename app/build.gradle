@@ -62,5 +62,12 @@ dependencies {
     //tablayout
     implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     implementation 'com.youth.banner:banner:1.4.10'  //最新版本
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    //加载中动画
+    implementation 'io.supercharge:shimmerlayout:2.1.0'
+    //vlayout
+    implementation('com.alibaba.android:vlayout:1.2.8@aar') {
+        transitive = true
+    }
+    //万能适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
 }

@@ -2,7 +2,6 @@ package com.boggle.wall.api
 
 import com.boggle.wall.entity.DataEntity
 import io.reactivex.Observable
-import okhttp3.ResponseBody
 import retrofit2.http.*
 
 
