@@ -29,9 +29,9 @@ class HomeFragment : Fragment() {
         fragments.add(FirstFragment())
         fragments.add(FirstFragment())
 
-        titles.add("首页")
-        titles.add("热门")
-        titles.add("最新")
+        titles.add("最初のページ")
+        titles.add("人気がある")
+        titles.add("最新の")
 
     }
 

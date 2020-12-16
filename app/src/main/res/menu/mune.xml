@@ -4,13 +4,13 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/home"
-        android:title="首页" />
+        android:title="ホームページ" />
     <item
         android:id="@+id/typeFragment"
         android:icon="@drawable/type"
-        android:title="分类" />
+        android:title="タイプ" />
     <item
         android:id="@+id/dayFragment"
         android:icon="@drawable/day"
-        android:title="每日精选" />
+        android:title="精選する" />
 </menu>

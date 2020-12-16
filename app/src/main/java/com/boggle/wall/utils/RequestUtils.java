@@ -54,4 +54,8 @@ public class RequestUtils {
     public int getRandom(){
         return (int) (Math.random() * 10+1);
     }
+
+    public int getBannerRandom(){
+        return (int) (Math.random() * 500+1);
+    }
 }

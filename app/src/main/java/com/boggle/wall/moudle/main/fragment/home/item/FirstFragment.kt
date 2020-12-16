@@ -76,6 +76,7 @@ class FirstFragment : Fragment() {
     }
 
     private fun initData() {
+        //banner
         viewModel.loadHeadData(requireActivity()).observe(viewLifecycleOwner, Observer {
             if (adapters == null) {
                 adapters = ArrayList()

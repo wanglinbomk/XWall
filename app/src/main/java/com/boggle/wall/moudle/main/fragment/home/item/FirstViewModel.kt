@@ -19,17 +19,14 @@ class FirstViewModel : ViewModel() {
     private var mData: MutableLiveData<MutableList<DataEntity>>? = null
     private var mHeadData: MutableLiveData<MutableList<DataEntity>>? = null
 
-    private var headPosition = 0
-    private var bottomPosition = 0
-
     fun loadHeadData(activity: FragmentActivity): MutableLiveData<MutableList<DataEntity>> {
         if (mHeadData == null) {
             mHeadData = MutableLiveData()
         }
         RetrofitHelper.getAppAPI().getData(
-            Constants.BASE_KEY, "", Constants.REQUEST_DEFAULT,
+            Constants.BASE_KEY, Constants.REQUEST_Q, Constants.REQUEST_DEFAULT,
             Constants.REQUEST_HORIZONTAL, RequestUtils.getInstance().randomCategory, "", false,
-            "", RequestUtils.getInstance().random, 5)
+            "", RequestUtils.getInstance().bannerRandom, 5)
             .compose(NetworkScheduler.compose())
             .subscribe(object : RequestCallbackV2<MutableList<DataEntity>>(activity) {
                 override fun success(data: MutableList<DataEntity>?) {

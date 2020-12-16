@@ -30,4 +30,9 @@ object Constants {
     var REQUEST_PHONE = "phone"
     var REQUEST_ILLUSTRATION = "illustration"
     var REQUEST_VECTOR = "vector"
+
+    /**
+     * banner
+     */
+    var REQUEST_Q="Japan"
 }
