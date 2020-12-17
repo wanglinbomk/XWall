@@ -4,22 +4,19 @@
     <data>
         <variable
             name="firstFragmentVM"
-            type="com.boggle.wall.moudle.main.fragment.home.item.FirstViewModel" />
+            type="com.boggle.wall.moudle.main.fragment.home.fhome.FirstViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".moudle.main.fragment.home.item.FirstFragment">
+        tools:context=".moudle.main.fragment.home.fhome.FirstFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_first_all"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
             android:descendantFocusability="beforeDescendants"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>

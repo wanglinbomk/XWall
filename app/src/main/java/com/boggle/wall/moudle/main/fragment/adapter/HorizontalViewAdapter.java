@@ -68,7 +68,7 @@ public class HorizontalViewAdapter extends DelegateAdapter.Adapter<BaseViewHolde
         HIndicators hIndicator = holder.getView(R.id.hi_dicators);
         rvAll.setAdapter(firstTopAdapter);
         hIndicator.bindRecyclerView(rvAll);
-        hIndicator.setIndicatorColor(Color.parseColor("#F52D56"));
+        hIndicator.setIndicatorColor(Color.parseColor("#8DB5F8"));
         hIndicator.setBgColor(Color.parseColor("#E6E6E6"));
     }
 

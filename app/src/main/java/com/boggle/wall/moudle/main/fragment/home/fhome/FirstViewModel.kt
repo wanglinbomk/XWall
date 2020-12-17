@@ -1,4 +1,4 @@
-package com.boggle.wall.moudle.main.fragment.home.item
+package com.boggle.wall.moudle.main.fragment.home.fhome
 
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
@@ -10,9 +10,6 @@ import com.boggle.wall.http.RetrofitHelper
 import com.boggle.wall.utils.Constants
 import com.boggle.wall.utils.RequestUtils
 import com.readystatesoftware.chuck.internal.ui.MainActivity
-import com.trello.rxlifecycle2.android.ActivityEvent
-import com.trello.rxlifecycle2.kotlin.bind
-import com.trello.rxlifecycle2.kotlin.bindUntilEvent
 
 class FirstViewModel : ViewModel() {
 
@@ -32,11 +29,15 @@ class FirstViewModel : ViewModel() {
             .compose(NetworkScheduler.compose())
             .subscribe(object : RequestCallbackV2<MutableList<DataEntity>>(activity) {
                 override fun success(data: MutableList<DataEntity>?) {
-                    mHeadData?.postValue(data)
+                    if (data?.size != 0) {
+                        mHeadData?.postValue(data)
+                    } else {
+                        loadHeadData(activity)
+                    }
                 }
 
                 override fun failure(msg: String) {
-                    mHeadData?.postValue(mutableListOf())
+                    loadHeadData(activity)
                 }
             })
 

@@ -1,4 +1,4 @@
-package com.boggle.wall.moudle.main.fragment.home.item
+package com.boggle.wall.moudle.main.fragment.home.fhome
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -31,13 +31,11 @@ class FirstFragment : Fragment() {
 
     //复用池塘
     private var viewPool: RecycledViewPool? = null
-
+    private var isFirst = true
     //vlayout Adapter
     private var delegateAdapter: DelegateAdapter? = null
-
     //一个Adapter对应一个类型，这里通过自增加1实现唯一性
     private var itemType = 0
-
     //不同类型的Adapter
     private var adapters: MutableList<DelegateAdapter.Adapter<BaseViewHolder>>? = null
 
@@ -54,7 +52,10 @@ class FirstFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(FirstViewModel::class.java)
         binding.firstFragmentVM = viewModel
         binding.lifecycleOwner = this
-        initValyout()
+        if (isFirst) {
+            initValyout()
+            isFirst = !isFirst
+        }
     }
 
     private fun initValyout() {
