@@ -8,4 +8,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <declare-styleable name="HIndicators">
+        <attr name="hi_bgColor" format="color"/>
+        <attr name="hi_indicatorColor" format="color"/>
+    </declare-styleable>
 </resources>

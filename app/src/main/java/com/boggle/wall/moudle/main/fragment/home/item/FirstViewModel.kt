@@ -18,6 +18,7 @@ class FirstViewModel : ViewModel() {
 
     private var mData: MutableLiveData<MutableList<DataEntity>>? = null
     private var mHeadData: MutableLiveData<MutableList<DataEntity>>? = null
+    private var mHorizontal: MutableLiveData<MutableList<DataEntity>>? = null
 
     fun loadHeadData(activity: FragmentActivity): MutableLiveData<MutableList<DataEntity>> {
         if (mHeadData == null) {
@@ -26,7 +27,8 @@ class FirstViewModel : ViewModel() {
         RetrofitHelper.getAppAPI().getData(
             Constants.BASE_KEY, Constants.REQUEST_Q, Constants.REQUEST_DEFAULT,
             Constants.REQUEST_HORIZONTAL, RequestUtils.getInstance().randomCategory, "", false,
-            "", RequestUtils.getInstance().bannerRandom, 5)
+            "", RequestUtils.getInstance().bannerRandom, 5
+        )
             .compose(NetworkScheduler.compose())
             .subscribe(object : RequestCallbackV2<MutableList<DataEntity>>(activity) {
                 override fun success(data: MutableList<DataEntity>?) {
@@ -39,6 +41,28 @@ class FirstViewModel : ViewModel() {
             })
 
         return mHeadData as MutableLiveData<MutableList<DataEntity>>
+    }
+
+    fun loadHorizontal(activity: FragmentActivity): MutableLiveData<MutableList<DataEntity>> {
+        if (mHorizontal == null) {
+            mHorizontal = MutableLiveData()
+        }
+        RetrofitHelper.getAppAPI().getData(
+            Constants.BASE_KEY, "", Constants.REQUEST_DEFAULT,
+            Constants.REQUEST_VERTICAL, RequestUtils.getInstance().titleKey, "", false,
+            "", RequestUtils.getInstance().random, 8
+        )
+            .compose(NetworkScheduler.compose())
+            .subscribe(object : RequestCallbackV2<MutableList<DataEntity>>(activity) {
+                override fun success(data: MutableList<DataEntity>?) {
+                    mHorizontal?.postValue(data)
+                }
+
+                override fun failure(msg: String) {
+                    mHorizontal?.postValue(mutableListOf())
+                }
+            })
+        return mHorizontal as MutableLiveData<MutableList<DataEntity>>
     }
 
     fun loadData(

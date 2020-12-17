@@ -17,6 +17,7 @@ import com.boggle.wall.R
 import com.boggle.wall.databinding.FirstFragmentBinding
 import com.boggle.wall.moudle.main.fragment.adapter.BannerAdapter
 import com.boggle.wall.moudle.main.fragment.adapter.HeadTitleAdapter
+import com.boggle.wall.moudle.main.fragment.adapter.HorizontalViewAdapter
 import com.boggle.wall.utils.RequestUtils
 import com.chad.library.adapter.base.BaseViewHolder
 import java.util.*
@@ -103,7 +104,20 @@ class FirstFragment : Fragment() {
                 , RequestUtils.getInstance().headTitles
             )
             adapters?.add(headTitleAdapter)
-            delegateAdapter!!.setAdapters(adapters!! as List<DelegateAdapter.Adapter<RecyclerView.ViewHolder>>?)
+
+            viewModel.loadHorizontal(requireActivity()).observe(viewLifecycleOwner, Observer {
+                viewPool!!.setMaxRecycledViews(itemType++, 1)
+                var horizontalViewAdapter = HorizontalViewAdapter(
+                    SingleLayoutHelper(),
+                    1,
+                    R.layout.item_recycler,
+                    requireContext(),
+                    3,
+                    it
+                )
+                adapters?.add(horizontalViewAdapter)
+                delegateAdapter!!.setAdapters(adapters!! as List<DelegateAdapter.Adapter<RecyclerView.ViewHolder>>?)
+            })
         })
     }
 }

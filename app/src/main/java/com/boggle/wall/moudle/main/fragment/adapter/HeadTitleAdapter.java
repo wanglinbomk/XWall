@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.boggle.wall.R;
+import com.boggle.wall.entity.TitleEntity;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.List;
@@ -20,9 +21,9 @@ public class HeadTitleAdapter extends DelegateAdapter.Adapter<BaseViewHolder> {
     private int mLayoutId = -1;
     private Context mContext;
     private int mViewTypeItem = -1;
-    private List<String> list;
+    private List<TitleEntity> list;
 
-    public HeadTitleAdapter(LayoutHelper mLayoutHelper, int mCount, int mLayoutId, Context mContext, int mViewTypeItem, List<String> list) {
+    public HeadTitleAdapter(LayoutHelper mLayoutHelper, int mCount, int mLayoutId, Context mContext, int mViewTypeItem, List<TitleEntity> list) {
         this.mLayoutHelper = mLayoutHelper;
         this.mCount = mCount;
         this.mLayoutId = mLayoutId;
@@ -47,7 +48,8 @@ public class HeadTitleAdapter extends DelegateAdapter.Adapter<BaseViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
-        holder.setText(R.id.tv_title, list.get(position));
+        holder.setText(R.id.tv_title, list.get(position).getTitle())
+                .setText(R.id.tv_title_des, list.get(position).getTitleDes());
     }
 
     @Override
