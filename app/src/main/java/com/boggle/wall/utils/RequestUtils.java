@@ -10,6 +10,7 @@ public class RequestUtils {
     private static volatile RequestUtils requestUtils = null;
 
     private int titlePosition = 0;
+    private int bottomPosition = 0;
 
     public static RequestUtils getInstance() {
         if (requestUtils == null) {
@@ -32,9 +33,9 @@ public class RequestUtils {
     private final String[] mCategoryCn = {"背景", "ファッション", "自然", "科学", "教育", "感情", "健康です", "人",
             "宗教", "場所", "動物", "工業", "コンピュータ", "食料品", "スポーツ", "世界", "旅行する", "建物", "商業", "音楽"};
 
-    private final String[] mCategoryDes = {"我们也会成为别人的背景", "ファッションは輪廻です。", "自然は時に不自然である。", "科学も宗教です。","多情ホルモン",
+    private final String[] mCategoryDes = {"我们也会成为别人的背景", "ファッションは輪廻です。", "自然は時に不自然である。", "科学も宗教です。", "多情ホルモン",
             "子供は教えないで、父の過ち。", "あなただけの資本", "あくせくして茫々としている", "信仰の力", "-> location", "万物は霊験あらたかである", "暗い世界", "あなたが見えない0と1",
-            "命を維持する意味のないもの", "感情を発散するもの", "バーチャルかもしれません","他の人が嫌いな都市に行きます。", "魂のない泥", "魅力的な散財主義", "あなたを喜ばせるかもしれないもの。"};
+            "命を維持する意味のないもの", "感情を発散するもの", "バーチャルかもしれません", "他の人が嫌いな都市に行きます。", "魂のない泥", "魅力的な散財主義", "あなたを喜ばせるかもしれないもの。"};
 
     /**
      * 类型对应的HasMap
@@ -55,7 +56,14 @@ public class RequestUtils {
     public List<TitleEntity> getHeadTitles() {
         titlePosition = (int) (Math.random() * mCategory.length);
         List<TitleEntity> temp = new ArrayList<>();
-        temp.add(new TitleEntity(mCategoryCn[titlePosition],mCategoryDes[titlePosition]));
+        temp.add(new TitleEntity(mCategoryCn[titlePosition], mCategoryDes[titlePosition]));
+        return temp;
+    }
+
+    public List<TitleEntity> getBottomTitle() {
+        bottomPosition = (int) (Math.random() * mCategory.length);
+        List<TitleEntity> temp = new ArrayList<>();
+        temp.add(new TitleEntity(mCategoryCn[bottomPosition], mCategoryDes[bottomPosition]));
         return temp;
     }
 

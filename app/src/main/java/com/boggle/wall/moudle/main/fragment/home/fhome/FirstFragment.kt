@@ -1,6 +1,7 @@
 package com.boggle.wall.moudle.main.fragment.home.fhome
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.alibaba.android.vlayout.layout.SingleLayoutHelper
 import com.boggle.wall.R
 import com.boggle.wall.databinding.FirstFragmentBinding
 import com.boggle.wall.moudle.main.fragment.adapter.BannerAdapter
+import com.boggle.wall.moudle.main.fragment.adapter.BottomTitleAdapter
 import com.boggle.wall.moudle.main.fragment.adapter.HeadTitleAdapter
 import com.boggle.wall.moudle.main.fragment.adapter.HorizontalViewAdapter
 import com.boggle.wall.utils.RequestUtils
@@ -103,7 +105,6 @@ class FirstFragment : Fragment() {
                 bannerStr
             )
             adapters?.add(bannerAdapter)
-
             //title
             viewPool!!.setMaxRecycledViews(itemType++, 1)
             var headTitleAdapter = HeadTitleAdapter(
@@ -111,7 +112,7 @@ class FirstFragment : Fragment() {
                 , RequestUtils.getInstance().headTitles
             )
             adapters?.add(headTitleAdapter)
-
+            //horizontal
             viewModel.loadHorizontal(requireActivity()).observe(viewLifecycleOwner, Observer {
                 viewPool!!.setMaxRecycledViews(itemType++, 1)
                 var horizontalViewAdapter = HorizontalViewAdapter(
