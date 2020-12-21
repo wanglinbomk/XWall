@@ -14,12 +14,10 @@ import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper
+import com.alibaba.android.vlayout.layout.StaggeredGridLayoutHelper
 import com.boggle.wall.R
 import com.boggle.wall.databinding.FirstFragmentBinding
-import com.boggle.wall.moudle.main.fragment.adapter.BannerAdapter
-import com.boggle.wall.moudle.main.fragment.adapter.BottomTitleAdapter
-import com.boggle.wall.moudle.main.fragment.adapter.HeadTitleAdapter
-import com.boggle.wall.moudle.main.fragment.adapter.HorizontalViewAdapter
+import com.boggle.wall.moudle.main.fragment.adapter.*
 import com.boggle.wall.utils.RequestUtils
 import com.chad.library.adapter.base.BaseViewHolder
 import java.util.*
@@ -29,14 +27,13 @@ class FirstFragment : Fragment() {
 
     private lateinit var viewModel: FirstViewModel
     private lateinit var binding: FirstFragmentBinding
-
     private var layoutManager: VirtualLayoutManager? = null
 
     //复用池塘
     private var viewPool: RecycledViewPool? = null
     private var isFirst = true
 
-    //vlayout Adapter
+    //vLayout Adapter
     private var delegateAdapter: DelegateAdapter? = null
 
     //一个Adapter对应一个类型，这里通过自增加1实现唯一性
@@ -124,8 +121,28 @@ class FirstFragment : Fragment() {
                     it
                 )
                 adapters?.add(horizontalViewAdapter)
-                delegateAdapter!!.setAdapters(adapters!! as List<DelegateAdapter.Adapter<RecyclerView.ViewHolder>>?)
+                loadBottomData()
             })
+        })
+    }
+
+    private fun loadBottomData() {
+        viewPool!!.setMaxRecycledViews(4, 1)
+        var bottomTitleAdapter = BottomTitleAdapter(
+            SingleLayoutHelper(), 1, R.layout.item_type_title, requireContext(), 4
+            , RequestUtils.getInstance().bottomTitle
+        )
+        adapters?.add(bottomTitleAdapter)
+
+        viewModel.loadData(requireActivity()).observe(viewLifecycleOwner, Observer {
+            viewPool!!.setMaxRecycledViews(itemType++, 1)
+            var staggeredGridLayoutHelper = StaggeredGridLayoutHelper(2, 0)
+            var imageBottomAdapter = ImageBottomAdapter(
+                staggeredGridLayoutHelper, it.size, R.layout.item_image_bottom, requireContext(),
+                5, it
+            )
+            adapters?.add(imageBottomAdapter)
+            delegateAdapter!!.setAdapters(adapters!! as List<DelegateAdapter.Adapter<RecyclerView.ViewHolder>>?)
         })
     }
 }

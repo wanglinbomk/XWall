@@ -53,6 +53,10 @@ public class RequestUtils {
         return mCategory[position];
     }
 
+    public String getBottomCategory() {
+        return mCategory[bottomPosition];
+    }
+
     public List<TitleEntity> getHeadTitles() {
         titlePosition = (int) (Math.random() * mCategory.length);
         List<TitleEntity> temp = new ArrayList<>();

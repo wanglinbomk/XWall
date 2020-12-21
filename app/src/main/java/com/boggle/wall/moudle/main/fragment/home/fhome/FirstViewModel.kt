@@ -17,6 +17,9 @@ class FirstViewModel : ViewModel() {
     private var mHeadData: MutableLiveData<MutableList<DataEntity>>? = null
     private var mHorizontal: MutableLiveData<MutableList<DataEntity>>? = null
 
+    private var page = 1
+    private var pageSize = 50
+
     fun loadHeadData(activity: FragmentActivity): MutableLiveData<MutableList<DataEntity>> {
         if (mHeadData == null) {
             mHeadData = MutableLiveData()
@@ -67,23 +70,22 @@ class FirstViewModel : ViewModel() {
     }
 
     fun loadData(
-        activity: MainActivity,
-        q: String,
-        image_type: String,
-        orientation: String,
-        category: String,
-        colors: String,
-        editors_choice: Boolean,
-        order: String,
-        page: Int,
-        per_page: Int
+        activity: FragmentActivity
     ): MutableLiveData<MutableList<DataEntity>> {
         if (mData == null) {
             mData = MutableLiveData()
         }
         RetrofitHelper.getAppAPI().getData(
-            Constants.BASE_KEY, q, image_type, orientation, category, colors,
-            editors_choice, order, page, per_page
+            Constants.BASE_KEY,
+            "",
+            Constants.REQUEST_DEFAULT,
+            Constants.REQUEST_VERTICAL,
+            RequestUtils.getInstance().bottomCategory,
+            "",
+            false,
+            "",
+            page,
+            pageSize
         )
             .compose(NetworkScheduler.compose())
             .subscribe(object : RequestCallbackV2<MutableList<DataEntity>>(activity) {

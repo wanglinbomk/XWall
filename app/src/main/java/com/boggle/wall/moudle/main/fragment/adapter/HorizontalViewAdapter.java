@@ -74,7 +74,7 @@ public class HorizontalViewAdapter extends DelegateAdapter.Adapter<BaseViewHolde
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return mCount;
     }
 
     @Override
