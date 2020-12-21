@@ -24,7 +24,7 @@ class FirstViewModel : ViewModel() {
         RetrofitHelper.getAppAPI().getData(
             Constants.BASE_KEY, Constants.REQUEST_Q, Constants.REQUEST_DEFAULT,
             Constants.REQUEST_HORIZONTAL, RequestUtils.getInstance().randomCategory, "", false,
-            "", RequestUtils.getInstance().bannerRandom, 5
+            "", RequestUtils.getInstance().bannerRandom, 4
         )
             .compose(NetworkScheduler.compose())
             .subscribe(object : RequestCallbackV2<MutableList<DataEntity>>(activity) {

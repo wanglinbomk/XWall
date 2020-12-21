@@ -22,6 +22,7 @@ import com.boggle.wall.utils.RequestUtils
 import com.chad.library.adapter.base.BaseViewHolder
 import java.util.*
 
+
 class FirstFragment : Fragment() {
 
     private lateinit var viewModel: FirstViewModel
@@ -32,10 +33,13 @@ class FirstFragment : Fragment() {
     //复用池塘
     private var viewPool: RecycledViewPool? = null
     private var isFirst = true
+
     //vlayout Adapter
     private var delegateAdapter: DelegateAdapter? = null
+
     //一个Adapter对应一个类型，这里通过自增加1实现唯一性
     private var itemType = 0
+
     //不同类型的Adapter
     private var adapters: MutableList<DelegateAdapter.Adapter<BaseViewHolder>>? = null
 
@@ -43,7 +47,9 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.first_fragment, container, false)
+        if (view == null) {
+            binding = DataBindingUtil.inflate(inflater, R.layout.first_fragment, container, false)
+        }
         return binding.root
     }
 
